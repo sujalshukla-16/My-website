@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "next build && next-on-netlify",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start"
@@ -49,6 +49,7 @@
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
     "next": "^14.2.32",
+    "next-on-netlify": "^3.0.1",
     "next-themes": "^0.4.6",
     "react": "^18",
     "react-day-picker": "9.8.0",
