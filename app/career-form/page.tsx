@@ -1,17 +1,29 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Badge } from "@/components/ui/badge"
-import { X } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge";
+import { X } from "lucide-react";
 
 const industries = [
   "Technology",
@@ -24,7 +36,7 @@ const industries = [
   "Consulting",
   "Non-profit",
   "Government",
-]
+];
 
 const skills = [
   "JavaScript",
@@ -42,7 +54,7 @@ const skills = [
   "Problem Solving",
   "Teamwork",
   "Time Management",
-]
+];
 
 const interests = [
   "Artificial Intelligence",
@@ -60,11 +72,11 @@ const interests = [
   "Sustainability",
   "Healthcare Innovation",
   "Financial Technology",
-]
+];
 
 export default function CareerForm() {
-  const router = useRouter()
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     currentRole: "",
     experienceLevel: "",
@@ -72,7 +84,7 @@ export default function CareerForm() {
     selectedSkills: [] as string[],
     selectedInterests: [] as string[],
     careerGoals: "",
-  })
+  });
 
   const handleSkillToggle = (skill: string) => {
     setFormData((prev) => ({
@@ -80,8 +92,8 @@ export default function CareerForm() {
       selectedSkills: prev.selectedSkills.includes(skill)
         ? prev.selectedSkills.filter((s) => s !== skill)
         : [...prev.selectedSkills, skill],
-    }))
-  }
+    }));
+  };
 
   const handleInterestToggle = (interest: string) => {
     setFormData((prev) => ({
@@ -89,42 +101,42 @@ export default function CareerForm() {
       selectedInterests: prev.selectedInterests.includes(interest)
         ? prev.selectedInterests.filter((i) => i !== interest)
         : [...prev.selectedInterests, interest],
-    }))
-  }
+    }));
+  };
 
   const removeSkill = (skill: string) => {
     setFormData((prev) => ({
       ...prev,
       selectedSkills: prev.selectedSkills.filter((s) => s !== skill),
-    }))
-  }
+    }));
+  };
 
   const removeInterest = (interest: string) => {
     setFormData((prev) => ({
       ...prev,
       selectedInterests: prev.selectedInterests.filter((i) => i !== interest),
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Store form data in localStorage for the results page
-    localStorage.setItem("careerFormData", JSON.stringify(formData))
+    localStorage.setItem("careerFormData", JSON.stringify(formData));
 
     // Simulate form processing time
     setTimeout(() => {
-      router.push("/loading")
-    }, 1000)
-  }
+      router.push("/loading");
+    }, 1000);
+  };
 
   const isFormValid =
     formData.currentRole &&
     formData.experienceLevel &&
     formData.industry &&
     formData.selectedSkills.length > 0 &&
-    formData.selectedInterests.length > 0
+    formData.selectedInterests.length > 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50">
@@ -135,7 +147,7 @@ export default function CareerForm() {
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">CA</span>
             </div>
-            <span className="font-semibold text-lg">Career Advisor</span>
+            <span className="font-semibold text-lg">Career Navigator</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             <Link href="/" className="text-gray-600 hover:text-gray-900">
@@ -154,9 +166,12 @@ export default function CareerForm() {
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">Tell Us About Yourself</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              Tell Us About Yourself
+            </h1>
             <p className="text-lg text-gray-600">
-              Help us understand your background so we can provide personalized career guidance.
+              Help us understand your background so we can provide personalized
+              career guidance.
             </p>
           </div>
 
@@ -164,7 +179,8 @@ export default function CareerForm() {
             <CardHeader>
               <CardTitle>Career Assessment Form</CardTitle>
               <CardDescription>
-                Fill out the form below to get your personalized career recommendations.
+                Fill out the form below to get your personalized career
+                recommendations.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -174,22 +190,32 @@ export default function CareerForm() {
                   <Label htmlFor="currentRole">Current Role</Label>
                   <Select
                     value={formData.currentRole}
-                    onValueChange={(value) => setFormData((prev) => ({ ...prev, currentRole: value }))}
+                    onValueChange={(value) =>
+                      setFormData((prev) => ({ ...prev, currentRole: value }))
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select your current role" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="student">Student</SelectItem>
-                      <SelectItem value="entry-level">Entry Level Professional</SelectItem>
-                      <SelectItem value="mid-level">Mid-Level Professional</SelectItem>
-                      <SelectItem value="senior-level">Senior Professional</SelectItem>
+                      <SelectItem value="entry-level">
+                        Entry Level Professional
+                      </SelectItem>
+                      <SelectItem value="mid-level">
+                        Mid-Level Professional
+                      </SelectItem>
+                      <SelectItem value="senior-level">
+                        Senior Professional
+                      </SelectItem>
                       <SelectItem value="manager">Manager</SelectItem>
                       <SelectItem value="director">Director</SelectItem>
                       <SelectItem value="executive">Executive</SelectItem>
                       <SelectItem value="entrepreneur">Entrepreneur</SelectItem>
                       <SelectItem value="freelancer">Freelancer</SelectItem>
-                      <SelectItem value="unemployed">Currently Unemployed</SelectItem>
+                      <SelectItem value="unemployed">
+                        Currently Unemployed
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -199,7 +225,12 @@ export default function CareerForm() {
                   <Label htmlFor="experienceLevel">Years of Experience</Label>
                   <Select
                     value={formData.experienceLevel}
-                    onValueChange={(value) => setFormData((prev) => ({ ...prev, experienceLevel: value }))}
+                    onValueChange={(value) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        experienceLevel: value,
+                      }))
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select your experience level" />
@@ -219,14 +250,19 @@ export default function CareerForm() {
                   <Label htmlFor="industry">Industry</Label>
                   <Select
                     value={formData.industry}
-                    onValueChange={(value) => setFormData((prev) => ({ ...prev, industry: value }))}
+                    onValueChange={(value) =>
+                      setFormData((prev) => ({ ...prev, industry: value }))
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select your industry" />
                     </SelectTrigger>
                     <SelectContent>
                       {industries.map((industry) => (
-                        <SelectItem key={industry} value={industry.toLowerCase()}>
+                        <SelectItem
+                          key={industry}
+                          value={industry.toLowerCase()}
+                        >
                           {industry}
                         </SelectItem>
                       ))}
@@ -240,9 +276,16 @@ export default function CareerForm() {
                   {formData.selectedSkills.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-3">
                       {formData.selectedSkills.map((skill) => (
-                        <Badge key={skill} variant="secondary" className="flex items-center gap-1">
+                        <Badge
+                          key={skill}
+                          variant="secondary"
+                          className="flex items-center gap-1"
+                        >
                           {skill}
-                          <X className="h-3 w-3 cursor-pointer hover:text-red-500" onClick={() => removeSkill(skill)} />
+                          <X
+                            className="h-3 w-3 cursor-pointer hover:text-red-500"
+                            onClick={() => removeSkill(skill)}
+                          />
                         </Badge>
                       ))}
                     </div>
@@ -255,7 +298,10 @@ export default function CareerForm() {
                           checked={formData.selectedSkills.includes(skill)}
                           onCheckedChange={() => handleSkillToggle(skill)}
                         />
-                        <Label htmlFor={`skill-${skill}`} className="text-sm font-normal cursor-pointer">
+                        <Label
+                          htmlFor={`skill-${skill}`}
+                          className="text-sm font-normal cursor-pointer"
+                        >
                           {skill}
                         </Label>
                       </div>
@@ -269,7 +315,11 @@ export default function CareerForm() {
                   {formData.selectedInterests.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-3">
                       {formData.selectedInterests.map((interest) => (
-                        <Badge key={interest} variant="outline" className="flex items-center gap-1">
+                        <Badge
+                          key={interest}
+                          variant="outline"
+                          className="flex items-center gap-1"
+                        >
                           {interest}
                           <X
                             className="h-3 w-3 cursor-pointer hover:text-red-500"
@@ -281,13 +331,21 @@ export default function CareerForm() {
                   )}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {interests.map((interest) => (
-                      <div key={interest} className="flex items-center space-x-2">
+                      <div
+                        key={interest}
+                        className="flex items-center space-x-2"
+                      >
                         <Checkbox
                           id={`interest-${interest}`}
-                          checked={formData.selectedInterests.includes(interest)}
+                          checked={formData.selectedInterests.includes(
+                            interest
+                          )}
                           onCheckedChange={() => handleInterestToggle(interest)}
                         />
-                        <Label htmlFor={`interest-${interest}`} className="text-sm font-normal cursor-pointer">
+                        <Label
+                          htmlFor={`interest-${interest}`}
+                          className="text-sm font-normal cursor-pointer"
+                        >
                           {interest}
                         </Label>
                       </div>
@@ -300,20 +358,36 @@ export default function CareerForm() {
                   <Label htmlFor="careerGoals">Career Goals (Optional)</Label>
                   <Select
                     value={formData.careerGoals}
-                    onValueChange={(value) => setFormData((prev) => ({ ...prev, careerGoals: value }))}
+                    onValueChange={(value) =>
+                      setFormData((prev) => ({ ...prev, careerGoals: value }))
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="What are your main career goals?" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="promotion">Get a promotion</SelectItem>
-                      <SelectItem value="career-change">Change careers</SelectItem>
-                      <SelectItem value="skill-development">Develop new skills</SelectItem>
-                      <SelectItem value="leadership">Move into leadership</SelectItem>
-                      <SelectItem value="entrepreneurship">Start my own business</SelectItem>
-                      <SelectItem value="work-life-balance">Improve work-life balance</SelectItem>
-                      <SelectItem value="higher-salary">Increase salary</SelectItem>
-                      <SelectItem value="remote-work">Find remote work opportunities</SelectItem>
+                      <SelectItem value="career-change">
+                        Change careers
+                      </SelectItem>
+                      <SelectItem value="skill-development">
+                        Develop new skills
+                      </SelectItem>
+                      <SelectItem value="leadership">
+                        Move into leadership
+                      </SelectItem>
+                      <SelectItem value="entrepreneurship">
+                        Start my own business
+                      </SelectItem>
+                      <SelectItem value="work-life-balance">
+                        Improve work-life balance
+                      </SelectItem>
+                      <SelectItem value="higher-salary">
+                        Increase salary
+                      </SelectItem>
+                      <SelectItem value="remote-work">
+                        Find remote work opportunities
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -338,5 +412,5 @@ export default function CareerForm() {
         </div>
       </main>
     </div>
-  )
+  );
 }
