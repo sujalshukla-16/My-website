@@ -7,7 +7,7 @@ import { Suspense } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Career Navigator - Your AI Career Mentor",
+  title: "CareerNavigator - Your AI Career Mentor",
   description:
     "Discover your personalized career path and close skill gaps with AI guidance",
   generator: "v0.app",

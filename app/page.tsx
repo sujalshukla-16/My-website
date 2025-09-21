@@ -11,7 +11,7 @@ export default function LandingPage() {
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">CN</span>
             </div>
-            <span className="font-semibold text-lg">Career Navigator</span>
+            <span className="font-semibold text-lg">CareerNavigator</span>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
             <Link href="/" className="text-gray-600 hover:text-gray-900">
@@ -129,7 +129,7 @@ export default function LandingPage() {
               <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
                 <span className="text-white font-bold text-xs">CN</span>
               </div>
-              <span className="font-semibold">Career Navigator</span>
+              <span className="font-semibold">CareerNavigator</span>
             </div>
             <div className="flex space-x-6">
               <Link href="/about" className="text-gray-600 hover:text-gray-900">

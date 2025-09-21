@@ -145,9 +145,9 @@ export default function CareerForm() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">CA</span>
+              <span className="text-white font-bold text-sm">CN</span>
             </div>
-            <span className="font-semibold text-lg">Career Navigator</span>
+            <span className="font-semibold text-lg">CareerNavigator</span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6">
             <Link href="/" className="text-gray-600 hover:text-gray-900">

@@ -199,7 +199,7 @@ export default function ResultsPage() {
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">CN</span>
             </div>
-            <span className="font-semibold text-lg">Career Navigator</span>
+            <span className="font-semibold text-lg">CareerNavigator</span>
           </Link>
           <div className="flex items-center space-x-4">
             <Button variant="outline" size="sm">
